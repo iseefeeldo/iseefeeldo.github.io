@@ -1,0 +1,898 @@
+/* ==========================================================================
+   Google Start Page Stylesheet
+   Google Material Theme & Chrome New Tab Style
+   ========================================================================== */
+
+:root {
+  /* Color Palette - Light Mode */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f1f3f4;
+  --border-color: #dfe1e5;
+  --border-hover: rgba(223, 225, 229, 0);
+  
+  --text-primary: #202124;
+  --text-secondary: #5f6368;
+  --text-muted: #80868b;
+  
+  --google-blue: #1a73e8;
+  --google-blue-hover: #174ea6;
+  --google-red: #ea4335;
+  --google-yellow: #fbbc05;
+  --google-green: #34a853;
+  
+  --search-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+  --card-shadow: 0 1px 3px rgba(60, 64, 67, 0.08), 0 2px 6px rgba(60, 64, 67, 0.04);
+  --card-shadow-hover: 0 4px 12px rgba(60, 64, 67, 0.15);
+  
+  --footer-bg: #f2f2f2;
+  --footer-border: #dadce0;
+  
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+  
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark Mode Theme */
+[data-theme="dark"] {
+  --bg-primary: #202124;
+  --bg-secondary: #171717;
+  --bg-card: #303134;
+  --bg-card-hover: #3c4043;
+  --border-color: #5f6368;
+  --border-hover: transparent;
+  
+  --text-primary: #e8eaed;
+  --text-secondary: #bdc1c6;
+  --text-muted: #9aa0a6;
+  
+  --google-blue: #8ab4f8;
+  --google-blue-hover: #aecbfa;
+  
+  --search-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 2px 6px rgba(0, 0, 0, 0.2);
+  --card-shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.5);
+  
+  --footer-bg: #171717;
+  --footer-border: #3c4043;
+}
+
+/* CSS Reset & Defaults */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Google Sans', 'Roboto', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.5;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Material Symbols Adjustments */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   Header (Top Navigation)
+   ========================================================================== */
+.top-nav {
+  min-height: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* 서울디지털대학교 로고 버튼 (심볼 로고 전용) */
+.sdu-logo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  flex-shrink: 0;
+}
+
+.sdu-logo-btn:hover {
+  background-color: var(--bg-card-hover);
+  border-color: rgba(25, 73, 158, 0.4);
+  box-shadow: var(--card-shadow);
+  transform: translateY(-1px);
+}
+
+.sdu-symbol {
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.sdu-icon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.sdu-fallback-icon {
+  font-size: 20px;
+  color: #19499e;
+}
+
+[data-theme="dark"] .sdu-fallback-icon {
+  color: #8ab4f8;
+}
+
+/* 헤더 구분선 */
+.nav-divider {
+  width: 1px;
+  height: 24px;
+  background-color: var(--border-color);
+}
+
+.clock-widget {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.time-text {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.5px;
+}
+
+.date-text {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.nav-link {
+  font-size: 13px;
+  color: var(--text-primary);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity var(--transition-fast);
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+  opacity: 1;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.icon-btn:hover {
+  background-color: var(--bg-card-hover);
+  color: var(--text-primary);
+}
+
+.user-avatar {
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+
+/* ==========================================================================
+   Main Content Layout
+   ========================================================================== */
+.main-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 10px 20px 40px;
+}
+
+/* ==========================================================================
+   Weather Section (Seoul & Jeju)
+   ========================================================================== */
+.weather-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.weather-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  width: 100%;
+  max-width: 680px;
+}
+
+.weather-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  box-shadow: var(--card-shadow);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.weather-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--google-blue), #34a853);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.weather-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: rgba(66, 133, 244, 0.4);
+}
+
+.weather-card:hover::before {
+  opacity: 1;
+}
+
+.weather-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.city-name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pin-icon {
+  font-size: 18px;
+  color: var(--google-red);
+}
+
+#weather-jeju .pin-icon {
+  color: var(--google-green);
+}
+
+.city-title {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.weather-badge {
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  background-color: rgba(26, 115, 232, 0.1);
+  color: var(--google-blue);
+  border-radius: var(--radius-full);
+  font-weight: 500;
+}
+
+.weather-badge.badge-jeju {
+  background-color: rgba(52, 168, 83, 0.1);
+  color: var(--google-green);
+}
+
+.weather-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.weather-main-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.weather-icon-symbol {
+  font-size: 2.2rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+}
+
+.temp-group {
+  display: flex;
+  align-items: flex-start;
+}
+
+.temp-val {
+  font-size: 2.1rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.temp-unit {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin-left: 2px;
+  margin-top: 2px;
+}
+
+.weather-sub-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.weather-desc {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.weather-meta {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.weather-meta b {
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.meta-dot {
+  color: var(--text-muted);
+}
+
+.refresh-btn {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-full);
+  padding: 4px 12px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.refresh-btn:hover {
+  background: var(--bg-card-hover);
+  color: var(--google-blue);
+  border-color: var(--border-color);
+}
+
+.refresh-btn .material-symbols-outlined {
+  font-size: 16px;
+  transition: transform 0.5s ease;
+}
+
+.refresh-btn.spinning .material-symbols-outlined {
+  transform: rotate(360deg);
+}
+
+/* ==========================================================================
+   Google Logo & Search Section
+   ========================================================================== */
+.search-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.logo-wrapper {
+  margin-bottom: 26px;
+  user-select: none;
+}
+
+.google-logo {
+  font-size: 4.8rem;
+  font-weight: 500;
+  letter-spacing: -2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.letter {
+  display: inline-block;
+  transition: transform var(--transition-fast);
+}
+
+.google-logo:hover .letter {
+  animation: bounce 0.6s ease infinite alternate;
+}
+
+.google-logo:hover .letter:nth-child(1) { animation-delay: 0.0s; }
+.google-logo:hover .letter:nth-child(2) { animation-delay: 0.1s; }
+.google-logo:hover .letter:nth-child(3) { animation-delay: 0.2s; }
+.google-logo:hover .letter:nth-child(4) { animation-delay: 0.3s; }
+.google-logo:hover .letter:nth-child(5) { animation-delay: 0.4s; }
+.google-logo:hover .letter:nth-child(6) { animation-delay: 0.5s; }
+
+@keyframes bounce {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-6px); }
+}
+
+.g-blue { color: #4285F4; }
+.o-red { color: #EA4335; }
+.o-yellow { color: #FBBC05; }
+.l-green { color: #34A853; }
+.e-red { color: #EA4335; }
+
+/* Search Bar */
+.search-form {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-bar {
+  width: 100%;
+  height: 48px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  transition: box-shadow var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.search-bar:hover {
+  box-shadow: var(--search-shadow);
+  border-color: var(--border-hover);
+}
+
+.search-bar:focus-within {
+  box-shadow: var(--search-shadow);
+  border-color: var(--border-hover);
+  background-color: var(--bg-card);
+}
+
+.search-icon-wrapper {
+  display: flex;
+  align-items: center;
+  color: var(--text-muted);
+  padding-right: 12px;
+}
+
+.search-icon {
+  font-size: 21px;
+}
+
+.search-input {
+  flex: 1;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: var(--text-primary);
+  font-family: inherit;
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.input-action-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.input-action-btn:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+}
+
+.input-action-btn.search-submit-icon {
+  color: var(--google-blue);
+}
+
+.input-action-btn.hidden {
+  display: none;
+}
+
+.search-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.google-btn {
+  background-color: var(--bg-secondary);
+  border: 1px solid transparent;
+  color: var(--text-primary);
+  font-size: 14px;
+  padding: 0 16px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+}
+
+.google-btn:hover {
+  border-color: var(--border-color);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  background-color: var(--bg-card-hover);
+}
+
+/* ==========================================================================
+   Shortcuts Section (Chrome New Tab Grid)
+   ========================================================================== */
+.shortcuts-section {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 28px;
+}
+
+.shortcuts-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  justify-items: center;
+}
+
+.shortcut-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  width: 84px;
+  padding: 10px 4px;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-fast);
+}
+
+.shortcut-item:hover {
+  background-color: var(--bg-card-hover);
+}
+
+.shortcut-icon-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.shortcut-item:hover .shortcut-icon-circle {
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow);
+}
+
+.svg-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.shortcut-label {
+  font-size: 12px;
+  color: var(--text-primary);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* ==========================================================================
+   Quote Section (오늘의 명언)
+   ========================================================================== */
+.quote-section {
+  width: 100%;
+  max-width: 640px;
+}
+
+.quote-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 18px 24px;
+  display: flex;
+  gap: 16px;
+  box-shadow: var(--card-shadow);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  position: relative;
+}
+
+.quote-card:hover {
+  box-shadow: var(--card-shadow-hover);
+}
+
+.quote-icon-bubble {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-full);
+  background-color: rgba(26, 115, 232, 0.08);
+  color: var(--google-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.quote-content-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.quote-text {
+  font-size: 0.98rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-primary);
+  font-style: italic;
+  quotes: "“" "”";
+  transition: opacity 0.3s ease;
+}
+
+.quote-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.quote-author {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  font-style: normal;
+}
+
+.quote-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.quote-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 5px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-fast), color var(--transition-fast), transform 0.4s ease;
+}
+
+.quote-btn:hover {
+  background-color: var(--bg-card-hover);
+  color: var(--google-blue);
+}
+
+.quote-btn .material-symbols-outlined {
+  font-size: 18px;
+}
+
+.quote-btn.spinning .material-symbols-outlined {
+  transform: rotate(360deg);
+}
+
+/* ==========================================================================
+   Footer (Google Style)
+   ========================================================================== */
+.google-footer {
+  background-color: var(--footer-bg);
+  border-top: 1px solid var(--footer-border);
+  color: var(--text-secondary);
+  font-size: 13px;
+  transition: background-color var(--transition-normal);
+}
+
+.footer-row {
+  padding: 12px 24px;
+}
+
+.footer-top {
+  border-bottom: 1px solid var(--footer-border);
+  font-size: 14px;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-links-left, .footer-links-right {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-bottom a {
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
+.footer-bottom a:hover {
+  text-decoration: underline;
+  color: var(--text-primary);
+}
+
+.footer-tip {
+  font-size: 12px;
+  color: var(--google-blue);
+}
+
+/* ==========================================================================
+   Toast Notification
+   ========================================================================== */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background-color: #323232;
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  z-index: 1000;
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+@media (max-width: 720px) {
+  .nav-divider {
+    display: none;
+  }
+
+  .weather-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .google-logo {
+    font-size: 3.6rem;
+  }
+  
+  .shortcuts-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .top-nav {
+    padding: 8px 16px;
+  }
+  
+  .clock-widget {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .google-logo {
+    font-size: 3rem;
+  }
+  
+  .search-buttons {
+    display: none;
+  }
+  
+  .shortcuts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .quote-card {
+    padding: 14px 16px;
+  }
+}
